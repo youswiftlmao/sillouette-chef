@@ -4,7 +4,9 @@
 [ext_resource type="Script" uid="uid://b73pewmid10af" path="res://scripts/player.gd" id="1_keyna"]
 [ext_resource type="Texture2D" uid="uid://bde7ey3v4yryp" path="res://assets/P_Run.png" id="2_owqyi"]
 [ext_resource type="Texture2D" uid="uid://cfq0vxihvspk3" path="res://assets/P_Fall.png" id="3_ut53c"]
-[ext_resource type="AudioStream" uid="uid://bg00mbanpxwy3" path="res://sounds/sound2.mp3" id="5_x8f5g"]
+[ext_resource type="AudioStream" uid="uid://bwqwqhuw1p0lf" path="res://sounds/sound3.mp3" id="5_oaxxh"]
+[ext_resource type="AudioStream" uid="uid://ctrirlx1vy0qk" path="res://sounds/abdalrahman_bm-8-bit-grass-footsteps-1-408575.mp3" id="6_oaxxh"]
+[ext_resource type="AudioStream" uid="uid://bvgt27lvb85h6" path="res://sounds/freesound_community-punch-boxing-06-reverb-82202.mp3" id="7_jnxtm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_md6kr"]
 atlas = ExtResource("1_bhwxj")
@@ -190,6 +192,21 @@ position = Vector2(0, -15)
 shape = SubResource("RectangleShape2D_keyna")
 
 [node name="jump" type="AudioStreamPlayer2D" parent="." unique_id=278766423]
-stream = ExtResource("5_x8f5g")
-volume_db = -3.881
+stream = ExtResource("5_oaxxh")
+volume_db = -10.0
 pitch_scale = 1.3
+
+[node name="Footstep" type="AudioStreamPlayer2D" parent="." unique_id=190843562]
+stream = ExtResource("6_oaxxh")
+volume_db = -10.0
+pitch_scale = 1.84
+
+[node name="FootstepTimer" type="Timer" parent="." unique_id=1549349623]
+wait_time = 0.4
+
+[node name="land_thud" type="AudioStreamPlayer2D" parent="." unique_id=694424819]
+stream = ExtResource("7_jnxtm")
+volume_db = -24.701
+pitch_scale = 1.1
+
+[connection signal="timeout" from="FootstepTimer" to="." method="_on_time_footstep_timer_timeout"]
