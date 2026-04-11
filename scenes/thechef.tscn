@@ -3,6 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://c5n3iurquxki6" path="res://assets/P_Idle.png" id="1_bhwxj"]
 [ext_resource type="Script" uid="uid://b73pewmid10af" path="res://scripts/player.gd" id="1_keyna"]
 [ext_resource type="Texture2D" uid="uid://bde7ey3v4yryp" path="res://assets/P_Run.png" id="2_owqyi"]
+[ext_resource type="Texture2D" uid="uid://cfq0vxihvspk3" path="res://assets/P_Fall.png" id="3_ut53c"]
+[ext_resource type="AudioStream" uid="uid://bg00mbanpxwy3" path="res://sounds/sound2.mp3" id="5_x8f5g"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_md6kr"]
 atlas = ExtResource("1_bhwxj")
@@ -129,6 +131,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("3_ut53c")
+}],
+"loop": false,
+"name": &"jump",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_1befu")
 }, {
 "duration": 1.0,
@@ -154,11 +164,11 @@ animations = [{
 }],
 "loop": true,
 "name": &"run",
-"speed": 9.0
+"speed": 10.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_keyna"]
-size = Vector2(11, 25)
+size = Vector2(11, 30)
 
 [node name="thechef" type="CharacterBody2D" unique_id=241996407]
 script = ExtResource("1_keyna")
@@ -168,14 +178,18 @@ position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_lrinr")
 animation = &"run"
 autoplay = "idle"
-frame_progress = 0.04554196
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1941308865]
 position = Vector2(0, -18)
-zoom = Vector2(3.5, 3.5)
+zoom = Vector2(4, 4)
 position_smoothing_enabled = true
 position_smoothing_speed = 7.0
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=719749520]
-position = Vector2(0, -12.5)
+position = Vector2(0, -15)
 shape = SubResource("RectangleShape2D_keyna")
+
+[node name="jump" type="AudioStreamPlayer2D" parent="." unique_id=278766423]
+stream = ExtResource("5_x8f5g")
+volume_db = -3.881
+pitch_scale = 1.3
