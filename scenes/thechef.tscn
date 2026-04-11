@@ -7,6 +7,13 @@
 [ext_resource type="AudioStream" uid="uid://bwqwqhuw1p0lf" path="res://sounds/sound3.mp3" id="5_oaxxh"]
 [ext_resource type="AudioStream" uid="uid://ctrirlx1vy0qk" path="res://sounds/abdalrahman_bm-8-bit-grass-footsteps-1-408575.mp3" id="6_oaxxh"]
 [ext_resource type="AudioStream" uid="uid://bvgt27lvb85h6" path="res://sounds/freesound_community-punch-boxing-06-reverb-82202.mp3" id="7_jnxtm"]
+[ext_resource type="Script" uid="uid://dje4y2f7lgemo" path="res://scripts/GUI.gd" id="8_vrpk8"]
+[ext_resource type="Texture2D" uid="uid://dmhh3luq3ohhe" path="res://assets/inv.png" id="9_pm1cm"]
+[ext_resource type="Texture2D" uid="uid://d4dgcivhkmf08" path="res://assets/bginv.png" id="10_e6ydx"]
+[ext_resource type="Texture2D" uid="uid://b4m41m1q6oghd" path="res://assets/inv open.png" id="11_e8iao"]
+[ext_resource type="FontFile" uid="uid://bh6jvsa7eqolq" path="res://text/Jersey10-Regular.ttf" id="12_yjsmm"]
+[ext_resource type="Texture2D" uid="uid://k61gepb1o8tr" path="res://assets/check.png" id="13_3uxqh"]
+[ext_resource type="Texture2D" uid="uid://bvhfw81gwrpnx" path="res://assets/DONE.png" id="14_gjg41"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_md6kr"]
 atlas = ExtResource("1_bhwxj")
@@ -172,6 +179,58 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_keyna"]
 size = Vector2(11, 30)
 
+[sub_resource type="Animation" id="Animation_pyvwr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(587.00006, 393.00003)]
+}
+
+[sub_resource type="Animation" id="Animation_bejd7"]
+resource_name = "close"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(587.00006, -295.99997), Vector2(587.00006, 393.00003)]
+}
+
+[sub_resource type="Animation" id="Animation_ixqi8"]
+resource_name = "open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(587.00006, 393.00003), Vector2(587.00006, -295.99997)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lyk8j"]
+_data = {
+&"RESET": SubResource("Animation_pyvwr"),
+&"close": SubResource("Animation_bejd7"),
+&"open": SubResource("Animation_ixqi8")
+}
+
 [node name="thechef" type="CharacterBody2D" unique_id=241996407]
 script = ExtResource("1_keyna")
 
@@ -209,4 +268,138 @@ stream = ExtResource("7_jnxtm")
 volume_db = -24.701
 pitch_scale = 1.1
 
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=614088534]
+script = ExtResource("8_vrpk8")
+
+[node name="toggleinv" type="TextureButton" parent="CanvasLayer" unique_id=339765818]
+offset_left = 990.00006
+offset_top = 481.00006
+offset_right = 1022.00006
+offset_bottom = 513.00006
+scale = Vector2(4.045454, 4.045454)
+texture_normal = ExtResource("9_pm1cm")
+
+[node name="inv2" type="Node2D" parent="CanvasLayer" unique_id=1778009688]
+position = Vector2(587.00006, 393.00003)
+scale = Vector2(4.045454, 4.045454)
+
+[node name="inv" type="TextureButton" parent="CanvasLayer/inv2" unique_id=155247739]
+modulate = Color(1, 1, 1, 0.6392157)
+offset_left = -145.00002
+offset_top = 70.0
+offset_right = -81.000015
+offset_bottom = 134.0
+scale = Vector2(4.558556, 2.6213572)
+texture_normal = ExtResource("10_e6ydx")
+
+[node name="InvOpen" type="Sprite2D" parent="CanvasLayer/inv2" unique_id=116163650]
+position = Vector2(0, 156.00002)
+scale = Vector2(2.4449477, 2.4449477)
+texture = ExtResource("11_e8iao")
+
+[node name="checklist" type="RichTextLabel" parent="CanvasLayer/inv2" unique_id=1299844320]
+offset_left = -57.999996
+offset_top = 95.99999
+offset_right = 201.03284
+offset_bottom = 167.57608
+scale = Vector2(0.48256433, 0.48256433)
+theme_override_constants/outline_size = 8
+theme_override_fonts/normal_font = ExtResource("12_yjsmm")
+theme_override_font_sizes/normal_font_size = 64
+text = " Checklist : "
+
+[node name="todo" type="RichTextLabel" parent="CanvasLayer/inv2" unique_id=1715685544]
+offset_left = -54.999996
+offset_top = 130.0
+offset_right = 204.03284
+offset_bottom = 201.57608
+scale = Vector2(0.48256433, 0.48256433)
+theme_override_constants/outline_size = 8
+theme_override_fonts/normal_font = ExtResource("12_yjsmm")
+theme_override_font_sizes/normal_font_size = 32
+text = " Flour (wheat)"
+
+[node name="todo2" type="RichTextLabel" parent="CanvasLayer/inv2" unique_id=819069973]
+offset_left = -54.999996
+offset_top = 159.0
+offset_right = 204.03284
+offset_bottom = 230.57608
+scale = Vector2(0.48256433, 0.48256433)
+theme_override_constants/outline_size = 8
+theme_override_fonts/normal_font = ExtResource("12_yjsmm")
+theme_override_font_sizes/normal_font_size = 32
+text = " Salt (from water)"
+
+[node name="todo3" type="RichTextLabel" parent="CanvasLayer/inv2" unique_id=2115722323]
+offset_left = -54.999996
+offset_top = 184.99998
+offset_right = 204.03284
+offset_bottom = 256.57605
+scale = Vector2(0.48256433, 0.48256433)
+theme_override_constants/outline_size = 8
+theme_override_fonts/normal_font = ExtResource("12_yjsmm")
+theme_override_font_sizes/normal_font_size = 32
+text = " Milk (from cows)"
+
+[node name="todo4" type="RichTextLabel" parent="CanvasLayer/inv2" unique_id=1807228165]
+offset_left = -53.999996
+offset_top = 201.99998
+offset_right = 205.03284
+offset_bottom = 273.57605
+scale = Vector2(0.48256433, 0.48256433)
+theme_override_constants/outline_size = 8
+theme_override_fonts/normal_font = ExtResource("12_yjsmm")
+theme_override_font_sizes/normal_font_size = 32
+text = " Baking powder
+yk when u see it"
+
+[node name="Check" type="Sprite2D" parent="CanvasLayer/inv2" unique_id=279740795]
+position = Vector2(54.000004, 139.00002)
+scale = Vector2(0.49769968, 0.49769968)
+texture = ExtResource("13_3uxqh")
+
+[node name="Check2" type="Sprite2D" parent="CanvasLayer/inv2" unique_id=128222869]
+position = Vector2(54.000004, 167.00002)
+scale = Vector2(0.49769968, 0.49769968)
+texture = ExtResource("13_3uxqh")
+
+[node name="Check3" type="Sprite2D" parent="CanvasLayer/inv2" unique_id=77483744]
+position = Vector2(54.000004, 194)
+scale = Vector2(0.49769968, 0.49769968)
+texture = ExtResource("13_3uxqh")
+
+[node name="Check4" type="Sprite2D" parent="CanvasLayer/inv2" unique_id=882223571]
+position = Vector2(54.000004, 219)
+scale = Vector2(0.49769968, 0.49769968)
+texture = ExtResource("13_3uxqh")
+
+[node name="Done" type="Sprite2D" parent="CanvasLayer/inv2" unique_id=1108935730]
+visible = false
+position = Vector2(53, 137)
+scale = Vector2(0.67926574, 0.67926574)
+texture = ExtResource("14_gjg41")
+
+[node name="Done2" type="Sprite2D" parent="CanvasLayer/inv2" unique_id=438305205]
+visible = false
+position = Vector2(53, 166)
+scale = Vector2(0.67926574, 0.67926574)
+texture = ExtResource("14_gjg41")
+
+[node name="Done3" type="Sprite2D" parent="CanvasLayer/inv2" unique_id=1555713679]
+visible = false
+position = Vector2(53, 193)
+scale = Vector2(0.67926574, 0.67926574)
+texture = ExtResource("14_gjg41")
+
+[node name="Done4" type="Sprite2D" parent="CanvasLayer/inv2" unique_id=1532638337]
+visible = false
+position = Vector2(53, 216.99997)
+scale = Vector2(0.67926574, 0.67926574)
+texture = ExtResource("14_gjg41")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/inv2" unique_id=304000255]
+libraries/ = SubResource("AnimationLibrary_lyk8j")
+
 [connection signal="timeout" from="FootstepTimer" to="." method="_on_time_footstep_timer_timeout"]
+[connection signal="pressed" from="CanvasLayer/toggleinv" to="CanvasLayer" method="_on_toggleinv_pressed"]
+[connection signal="pressed" from="CanvasLayer/inv2/inv" to="CanvasLayer" method="_on_inv_pressed"]

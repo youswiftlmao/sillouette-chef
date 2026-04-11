@@ -3,10 +3,16 @@ extends CharacterBody2D
 
 const SPEED = 175.0
 const JUMP_VELOCITY = -270.0
- 
+
+
 @onready var chef: AnimatedSprite2D = $chef
 
 var was_on_floor: bool = false
+
+var gotitem1 = false
+var gotitem2 = false
+var gotitem3 = false
+var gotitem4 = false
 
 
 func _physics_process(delta: float) -> void:
