@@ -7,6 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://n7tcnf6h84iy" path="res://assets/WATER23.png" id="5_gee14"]
 [ext_resource type="Texture2D" uid="uid://b7to46ii7n5k6" path="res://assets/salt.png" id="6_0tnpc"]
 [ext_resource type="Script" uid="uid://cg3bu5kt4trah" path="res://scripts/salt.gd" id="7_vtaks"]
+[ext_resource type="AudioStream" uid="uid://c5hg3b1e2uewp" path="res://sounds/driken5482-retro-blip-236676.mp3" id="8_gee14"]
+[ext_resource type="Texture2D" uid="uid://bypl22qrjiqxt" path="res://assets/wheat.png" id="9_kvpfn"]
+[ext_resource type="Texture2D" uid="uid://bvnymuj7467jr" path="res://assets/wheatdrop.png" id="10_dinhu"]
+[ext_resource type="Script" uid="uid://c3oime51t7fkk" path="res://scripts/wheat.gd" id="11_kvuet"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lnu2h"]
 texture = ExtResource("2_yqjtg")
@@ -834,10 +838,47 @@ _data = {
 &"pick": SubResource("Animation_dinhu")
 }
 
+[sub_resource type="Animation" id="Animation_trtic"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1985, -254)]
+}
+
+[sub_resource type="Animation" id="Animation_ir15t"]
+resource_name = "click"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.09827651, 0.11661501, 0.22304197, 0.23333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1985, -254), Vector2(1985, -254), Vector2(1985, -254), Vector2(1985, -254), Vector2(1986, -254)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ca42v"]
+_data = {
+&"RESET": SubResource("Animation_trtic"),
+&"click": SubResource("Animation_ir15t")
+}
+
 [node name="game" type="Node2D" unique_id=1023594005]
 
 [node name="thechef" parent="." unique_id=241996407 instance=ExtResource("1_uwrxv")]
-position = Vector2(2401, -228)
+position = Vector2(2072, -263)
 
 [node name="TileMap" type="TileMap" parent="." unique_id=2128948057]
 tile_set = SubResource("TileSet_lbhrr")
@@ -930,5 +971,59 @@ script = ExtResource("7_vtaks")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="pickups/salt" unique_id=351555315]
 libraries/ = SubResource("AnimationLibrary_kvuet")
 
+[node name="blip12" type="AudioStreamPlayer2D" parent="pickups" unique_id=1404090897]
+position = Vector2(1839, 389)
+stream = ExtResource("8_gee14")
+volume_db = -8.0
+
+[node name="blip2" type="AudioStreamPlayer2D" parent="pickups" unique_id=788711718]
+position = Vector2(1839, 389)
+stream = ExtResource("8_gee14")
+volume_db = -8.0
+pitch_scale = 1.3
+
+[node name="wheatdecor" type="Sprite2D" parent="pickups" unique_id=889463643]
+position = Vector2(1925, -238)
+texture = ExtResource("9_kvpfn")
+
+[node name="Wheat2" type="Sprite2D" parent="pickups/wheatdecor" unique_id=629278670]
+position = Vector2(22, 4)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("9_kvpfn")
+
+[node name="Wheat3" type="Sprite2D" parent="pickups/wheatdecor/Wheat2" unique_id=1494230050]
+position = Vector2(24.666748, -3.333252)
+scale = Vector2(1.2083282, 1.2083282)
+texture = ExtResource("9_kvpfn")
+
+[node name="Wheatdrop2" type="Sprite2D" parent="pickups/wheatdecor/Wheat2" unique_id=660977808]
+position = Vector2(28.666748, 8.6666565)
+scale = Vector2(0.9166667, 0.9166667)
+texture = ExtResource("10_dinhu")
+
+[node name="Wheatdrop" type="Sprite2D" parent="pickups/wheatdecor/Wheat2" unique_id=376968450]
+position = Vector2(45.333496, 5.333313)
+scale = Vector2(1.3333334, 1.3333334)
+texture = ExtResource("10_dinhu")
+
+[node name="Wheatdrop3" type="Sprite2D" parent="pickups/wheatdecor/Wheat2" unique_id=496977783]
+position = Vector2(36.666748, 8.6666565)
+scale = Vector2(0.9166667, 0.9166667)
+texture = ExtResource("10_dinhu")
+
+[node name="wheat" type="TextureButton" parent="pickups" unique_id=609008895]
+offset_left = 1985.0
+offset_top = -254.0
+offset_right = 2015.0
+offset_bottom = -222.0
+texture_normal = ExtResource("9_kvpfn")
+ignore_texture_size = true
+script = ExtResource("11_kvuet")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="pickups/wheat" unique_id=1781120600]
+libraries/ = SubResource("AnimationLibrary_ca42v")
+
 [connection signal="ITEM2" from="pickups/salt" to="thechef" method="_on_salt_item_2"]
 [connection signal="pressed" from="pickups/salt" to="pickups/salt" method="_on_pressed"]
+[connection signal="ITEM1" from="pickups/wheat" to="thechef" method="_on_wheat_item_1"]
+[connection signal="pressed" from="pickups/wheat" to="pickups/wheat" method="_on_pressed"]
