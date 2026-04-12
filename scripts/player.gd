@@ -69,6 +69,13 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
-
+	#here under is for items recieved:
+	if gotitem2 == true:
+		$CanvasLayer/inv2/Done2.visible = true
+		
 func _on_time_footstep_timer_timeout() -> void:
 	$Footstep.play()
+
+
+func _on_salt_item_2() -> void:
+	gotitem2 = true
