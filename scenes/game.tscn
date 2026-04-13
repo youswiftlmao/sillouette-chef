@@ -16,6 +16,7 @@
 [ext_resource type="Script" uid="uid://c3oime51t7fkk" path="res://scripts/wheat.gd" id="11_kvuet"]
 [ext_resource type="PackedScene" uid="uid://c06uioggdg5fs" path="res://scenes/platform.tscn" id="12_dinhu"]
 [ext_resource type="Texture2D" uid="uid://dxmj43hs6x825" path="res://assets/barn.png" id="15_rysoc"]
+[ext_resource type="PackedScene" uid="uid://bhlpagmp7x882" path="res://scenes/bat.tscn" id="17_rysoc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lnu2h"]
 texture = ExtResource("2_yqjtg")
@@ -1195,6 +1196,9 @@ position = Vector2(3052, 91)
 
 [node name="platform5" parent="." unique_id=649916647 instance=ExtResource("12_dinhu")]
 position = Vector2(3156, 115)
+
+[node name="bat" parent="." unique_id=1589009573 instance=ExtResource("17_rysoc")]
+position = Vector2(68, -47.000004)
 
 [connection signal="ITEM2" from="pickups/salt" to="thechef" method="_on_salt_item_2"]
 [connection signal="pressed" from="pickups/salt" to="pickups/salt" method="_on_pressed"]

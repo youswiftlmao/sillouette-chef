@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://bhlpagmp7x882"]
+
+[ext_resource type="Texture2D" uid="uid://cnev2q58hvatw" path="res://assets/Bat.png" id="1_uhqni"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cnldk"]
+atlas = ExtResource("1_uhqni")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_48wkk"]
+atlas = ExtResource("1_uhqni")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ss3tx"]
+atlas = ExtResource("1_uhqni")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lv0ya"]
+atlas = ExtResource("1_uhqni")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5fn3r"]
+atlas = ExtResource("1_uhqni")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8qtcx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cnldk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_48wkk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ss3tx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lv0ya")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5fn3r")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.01
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uhqni"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cnldk"]
+radius = 7.253174
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_48wkk"]
+
+[node name="bat" type="CharacterBody2D" unique_id=1777148116]
+scale = Vector2(1.1029655, 1.1029655)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1393438554]
+sprite_frames = SubResource("SpriteFrames_8qtcx")
+autoplay = "default"
+frame_progress = 0.5717432
+
+[node name="detection area" type="Area2D" parent="." unique_id=564653904]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detection area" unique_id=1752490162]
+scale = Vector2(7.422573, 7.422573)
+shape = SubResource("CircleShape2D_uhqni")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=168810290]
+position = Vector2(0, -2.7199402)
+scale = Vector2(0.32523188, 0.32523188)
+shape = SubResource("CircleShape2D_cnldk")
+
+[node name="bathitbox" type="Area2D" parent="." unique_id=1115261843]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bathitbox" unique_id=2008279871]
+position = Vector2(0, -2.7199402)
+scale = Vector2(1.3124406, 1.3124406)
+shape = SubResource("CircleShape2D_48wkk")

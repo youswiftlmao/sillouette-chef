@@ -3,9 +3,16 @@ extends CharacterBody2D
 
 const SPEED = 175.0
 const JUMP_VELOCITY = -270.0
+#combat related vars
+var health = 100
 
+var bat_inattackrange = false
+var bat_cooldown = true
+var playeralive = true
 
 @onready var chef: AnimatedSprite2D = $chef
+@onready var healthbar: ProgressBar = $CanvasLayer/healthbar
+
 
 var was_on_floor: bool = false
 
@@ -14,9 +21,12 @@ var gotitem2 = false
 var gotitem3 = false
 var gotitem4 = false
 
-
+func _ready() -> void:
+	updhp()
+	
 func _physics_process(delta: float) -> void:
-
+	if health <= 0 :
+		Transition.reset_scene()
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -94,3 +104,24 @@ func _on_cow_item_3() -> void:
 func player():
 	pass
 	
+func updhp():
+	healthbar.health = health
+
+
+func _on_hurt_area_entered(area: Area2D) -> void:
+	if area.has_method("hploss"):
+		health -= 10
+		healthbar.health = health
+		print(health)
+
+
+func _on_players_hitbox_body_entered(body: Node2D) -> void:
+	if body.has_method("bat"):
+		bat_inattackrange = true
+
+
+func _on_players_hitbox_body_exited(body: Node2D) -> void:
+	if body.has_method("bat"):
+		bat_inattackrange = false
+func enemyattack():
+	pass

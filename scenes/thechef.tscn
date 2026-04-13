@@ -14,6 +14,7 @@
 [ext_resource type="FontFile" uid="uid://bh6jvsa7eqolq" path="res://text/Jersey10-Regular.ttf" id="12_yjsmm"]
 [ext_resource type="Texture2D" uid="uid://k61gepb1o8tr" path="res://assets/check.png" id="13_3uxqh"]
 [ext_resource type="Texture2D" uid="uid://bvhfw81gwrpnx" path="res://assets/DONE.png" id="14_gjg41"]
+[ext_resource type="PackedScene" uid="uid://jcangal3rt4t" path="res://scenes/healthbar.tscn" id="15_pm1cm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_md6kr"]
 atlas = ExtResource("1_bhwxj")
@@ -231,6 +232,9 @@ _data = {
 &"open": SubResource("Animation_ixqi8")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_pm1cm"]
+radius = 18.0
+
 [node name="thechef" type="CharacterBody2D" unique_id=241996407]
 script = ExtResource("1_keyna")
 
@@ -400,6 +404,21 @@ texture = ExtResource("14_gjg41")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/inv2" unique_id=304000255]
 libraries/ = SubResource("AnimationLibrary_lyk8j")
 
+[node name="healthbar" parent="CanvasLayer" unique_id=855770443 instance=ExtResource("15_pm1cm")]
+offset_left = 33.0
+offset_top = 27.0
+offset_right = 273.0
+offset_bottom = 54.0
+scale = Vector2(1.5363446, 1.5363446)
+
+[node name="players_hitbox" type="Area2D" parent="." unique_id=1838671487]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="players_hitbox" unique_id=1479626788]
+position = Vector2(0, -15)
+shape = SubResource("CircleShape2D_pm1cm")
+
 [connection signal="timeout" from="FootstepTimer" to="." method="_on_time_footstep_timer_timeout"]
 [connection signal="pressed" from="CanvasLayer/toggleinv" to="CanvasLayer" method="_on_toggleinv_pressed"]
 [connection signal="pressed" from="CanvasLayer/inv2/inv" to="CanvasLayer" method="_on_inv_pressed"]
+[connection signal="body_entered" from="players_hitbox" to="." method="_on_players_hitbox_body_entered"]
+[connection signal="body_exited" from="players_hitbox" to="." method="_on_players_hitbox_body_exited"]
