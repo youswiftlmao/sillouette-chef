@@ -998,7 +998,7 @@ _data = {
 script = ExtResource("1_ca42v")
 
 [node name="thechef" parent="." unique_id=241996407 instance=ExtResource("1_uwrxv")]
-position = Vector2(-58, -58)
+position = Vector2(2025, -332)
 
 [node name="TileMap" type="TileMap" parent="." unique_id=2128948057]
 tile_set = SubResource("TileSet_lbhrr")
@@ -1092,6 +1092,7 @@ script = ExtResource("7_vtaks")
 libraries/ = SubResource("AnimationLibrary_kvuet")
 
 [node name="wheat" type="TextureButton" parent="pickups" unique_id=609008895]
+z_index = 2
 offset_left = 1985.0
 offset_top = -254.0
 offset_right = 2015.0

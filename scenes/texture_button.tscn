@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://qcg3ltwyxqkr"]
+
+[ext_resource type="Texture2D" uid="uid://dmhh3luq3ohhe" path="res://assets/inv.png" id="1_pom25"]
+[ext_resource type="Texture2D" uid="uid://b4m41m1q6oghd" path="res://assets/inv open.png" id="2_7k1tt"]
+[ext_resource type="Texture2D" uid="uid://bvhfw81gwrpnx" path="res://assets/DONE.png" id="3_qkt4e"]
+
+[node name="TextureButton" type="TextureButton" unique_id=1909682196]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(10.112989, 10.112989)
+texture_normal = ExtResource("1_pom25")
+texture_pressed = ExtResource("2_7k1tt")
+texture_hover = ExtResource("3_qkt4e")
