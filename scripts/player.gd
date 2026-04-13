@@ -74,6 +74,8 @@ func _physics_process(delta: float) -> void:
 		$CanvasLayer/inv2/Done2.visible = true
 	if gotitem1:
 		$CanvasLayer/inv2/Done.visible = true
+	if gotitem3 == true :
+		$CanvasLayer/inv2/Done3.visible = true
 func _on_time_footstep_timer_timeout() -> void:
 	$Footstep.play()
 
@@ -84,4 +86,11 @@ func _on_salt_item_2() -> void:
 
 func _on_wheat_item_1() -> void:
 	gotitem1 = true
+	
+
+
+func _on_cow_item_3() -> void:
+	gotitem3 = true
+func player():
+	pass
 	

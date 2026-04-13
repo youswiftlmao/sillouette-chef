@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://c06uioggdg5fs"]
+
+[ext_resource type="Texture2D" uid="uid://c6blbtcgx4xmv" path="res://assets/jungle tileset.png" id="1_ba0x2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nlgqw"]
+size = Vector2(20, 2)
+
+[node name="platform" type="AnimatableBody2D" unique_id=1419959132]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=360728915]
+shape = SubResource("RectangleShape2D_nlgqw")
+one_way_collision = true
+
+[node name="JungleTileset" type="Sprite2D" parent="." unique_id=954067893]
+position = Vector2(-6.9999995, 1.4901161e-08)
+scale = Vector2(0.22058816, 0.22058819)
+texture = ExtResource("1_ba0x2")
+region_enabled = true
+region_rect = Rect2(205.70892, 63.382874, 35.47792, 17.493263)
+
+[node name="JungleTileset2" type="Sprite2D" parent="." unique_id=21937486]
+position = Vector2(-0.4301467, 1.7763568e-15)
+scale = Vector2(0.2531512, 0.22058819)
+texture = ExtResource("1_ba0x2")
+region_enabled = true
+region_rect = Rect2(205.70892, 63.382874, 35.47792, 17.493263)
+
+[node name="JungleTileset3" type="Sprite2D" parent="." unique_id=519257980]
+position = Vector2(7, 1.7763566e-15)
+rotation = -0.0061317743
+scale = Vector2(0.221, 0.221)
+texture = ExtResource("1_ba0x2")
+region_enabled = true
+region_rect = Rect2(205.70892, 63.382874, 35.47792, 17.493263)
