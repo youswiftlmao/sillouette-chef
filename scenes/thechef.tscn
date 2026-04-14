@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://b73pewmid10af" path="res://scripts/player.gd" id="1_keyna"]
 [ext_resource type="Texture2D" uid="uid://be8redmbe1col" path="res://assets/P_FullCombo.png" id="2_e6ydx"]
 [ext_resource type="Texture2D" uid="uid://bde7ey3v4yryp" path="res://assets/P_Run.png" id="2_owqyi"]
+[ext_resource type="Texture2D" uid="uid://duh5pltysmh7f" path="res://assets/P_Hit.png" id="3_e8iao"]
 [ext_resource type="Texture2D" uid="uid://cfq0vxihvspk3" path="res://assets/P_Fall.png" id="3_ut53c"]
 [ext_resource type="AudioStream" uid="uid://bwqwqhuw1p0lf" path="res://sounds/sound3.mp3" id="5_oaxxh"]
 [ext_resource type="AudioStream" uid="uid://ctrirlx1vy0qk" path="res://sounds/abdalrahman_bm-8-bit-grass-footsteps-1-408575.mp3" id="6_oaxxh"]
@@ -16,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://k61gepb1o8tr" path="res://assets/check.png" id="13_3uxqh"]
 [ext_resource type="Texture2D" uid="uid://bvhfw81gwrpnx" path="res://assets/DONE.png" id="14_gjg41"]
 [ext_resource type="PackedScene" uid="uid://jcangal3rt4t" path="res://scenes/healthbar.tscn" id="15_pm1cm"]
+[ext_resource type="AudioStream" uid="uid://cifhicxvgu5ak" path="res://sounds/freesound_community-hurt_c_08-102842.mp3" id="18_yjsmm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e8iao"]
 atlas = ExtResource("2_e6ydx")
@@ -92,6 +94,10 @@ region = Rect2(1040, 96, 79, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_g5tfv"]
 atlas = ExtResource("2_e6ydx")
 region = Rect2(1040, 128, 79, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bejd7"]
+atlas = ExtResource("3_e8iao")
+region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_md6kr"]
 atlas = ExtResource("1_bhwxj")
@@ -254,6 +260,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_bejd7")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_md6kr")
 }, {
 "duration": 1.0,
@@ -394,9 +408,8 @@ script = ExtResource("1_keyna")
 
 [node name="chef" type="AnimatedSprite2D" parent="." unique_id=2119319736]
 sprite_frames = SubResource("SpriteFrames_lrinr")
-animation = &"attack1"
+animation = &"hit"
 autoplay = "idle"
-frame = 3
 frame_progress = 1.0
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1941308865]
@@ -573,10 +586,14 @@ position = Vector2(0, -15)
 shape = SubResource("CircleShape2D_pm1cm")
 
 [node name="ATTACKCD" type="Timer" parent="." unique_id=1902029448]
-wait_time = 0.5
 
 [node name="deal_atc_damage" type="Timer" parent="." unique_id=293703250]
 wait_time = 0.5
+
+[node name="damage" type="AudioStreamPlayer2D" parent="." unique_id=1418582991]
+stream = ExtResource("18_yjsmm")
+volume_db = -8.0
+pitch_scale = 1.52
 
 [connection signal="timeout" from="FootstepTimer" to="." method="_on_time_footstep_timer_timeout"]
 [connection signal="pressed" from="CanvasLayer/toggleinv" to="CanvasLayer" method="_on_toggleinv_pressed"]

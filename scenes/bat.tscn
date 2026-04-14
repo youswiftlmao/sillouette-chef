@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bqtmysmd328ym" path="res://scripts/bat.gd" id="1_cnldk"]
 [ext_resource type="Texture2D" uid="uid://cnev2q58hvatw" path="res://assets/Bat.png" id="1_uhqni"]
+[ext_resource type="AudioStream" uid="uid://cifhicxvgu5ak" path="res://sounds/freesound_community-hurt_c_08-102842.mp3" id="3_48wkk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8qtcx"]
 atlas = ExtResource("1_uhqni")
@@ -132,6 +133,7 @@ animations = [{
 radius = 7.253174
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_48wkk"]
+radius = 15.260485
 
 [node name="bat" type="CharacterBody2D" unique_id=1777148116]
 scale = Vector2(1.1029655, 1.1029655)
@@ -139,8 +141,8 @@ script = ExtResource("1_cnldk")
 
 [node name="bat" type="AnimatedSprite2D" parent="." unique_id=1393438554]
 sprite_frames = SubResource("SpriteFrames_8qtcx")
+animation = &"die"
 autoplay = "default"
-frame_progress = 0.3265112
 
 [node name="detection area" type="Area2D" parent="." unique_id=564653904]
 
@@ -162,6 +164,12 @@ shape = SubResource("CircleShape2D_48wkk")
 
 [node name="takedamage cd" type="Timer" parent="." unique_id=1218894]
 wait_time = 0.6
+
+[node name="hit" type="AudioStreamPlayer2D" parent="." unique_id=542256421]
+position = Vector2(76.158325, 54.398804)
+stream = ExtResource("3_48wkk")
+volume_db = -12.03
+pitch_scale = 2.3
 
 [connection signal="body_entered" from="detection area" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="detection area" to="." method="_on_detection_area_body_exited"]

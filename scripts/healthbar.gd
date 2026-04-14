@@ -5,7 +5,7 @@ extends ProgressBar
 @onready var timer: Timer = $Timer
 var health := 100 : set = _set_health
 var prevhealth := 100
-var damage_speed := 80.0
+var damage_speed := 10
 var waiting := false
 
 

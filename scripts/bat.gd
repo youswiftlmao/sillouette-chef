@@ -11,6 +11,10 @@ func  _physics_process(delta: float) -> void:
 	deal_with_damage()
 	
 	if health <= 0 :
+		cantakedamage = false
+		playerinattackzone = false
+		$bat.play("die")
+		await $bat.animation_finished
 		self.queue_free()
 	if playerchase:
 		position +=(player.position - position)/speed 
@@ -42,13 +46,18 @@ func _on_bathitbox_body_exited(body: Node2D) -> void:
 		playerinattackzone = false
 		
 func deal_with_damage():
-	if playerinattackzone and Gobal.chef_current_attack == true:
-		if cantakedamage == true :
-			health -= 35
+	if health <= 0:
+		return
+	if playerinattackzone and Gobal.chef_current_attack == true and health > 0:
+		if cantakedamage == true:
+			health -= 51
+			
+
+			$hit.play()
 			$"takedamage cd".start()
 			cantakedamage = false
-			print("bat hp = ,", health)
 
 
 func _on_takedamage_cd_timeout() -> void:
-	cantakedamage = true
+	if health > 0 :
+		cantakedamage = true

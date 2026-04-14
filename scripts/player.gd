@@ -61,22 +61,18 @@ func _physics_process(delta: float) -> void:
 		 
 	#animations
 	if is_on_floor():
-		if attackip:
-			pass
-		elif direction == 0:
-			chef.play("idle")
-			$Footstep.stop()
-			$FootstepTimer.stop()
-		else:
-			chef.play("run")
+		if not attackip :
+			if direction == 0:
+				chef.play("idle")
+			else:
+				chef.play("run")
 
+		if is_on_floor() and direction != 0:
 			if $FootstepTimer.is_stopped():
-				$Footstep.play()      # instant first step
+				$Footstep.play()
 				$FootstepTimer.start()
-	else:
-		$Footstep.stop()
-		$FootstepTimer.stop()
-
+		else:
+			$FootstepTimer.stop()
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		$jump.play()
 		chef.play("jump")
@@ -89,6 +85,16 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
+	
+		
+	if chef.animation == "hit" and not chef.is_playing():
+		if is_on_floor():
+			if Input.get_axis("left", "right") == 0:
+				chef.play("idle")
+			else:
+				chef.play("run")
+			
+
 	#here under is for items recieved:
 	if gotitem2 == true:
 		$CanvasLayer/inv2/Done2.visible = true
@@ -135,8 +141,10 @@ func _on_players_hitbox_body_exited(body: Node2D) -> void:
 		bat_inattackrange = false
 func enemyattack():
 	if bat_inattackrange and bat_atckcooldown == true :
-		health -= 7
+		health -= 15
 		bat_atckcooldown = false
+		flash_white()
+		$damage.play()
 		$ATTACKCD.start()
 		print("chef took damage", health)
 
@@ -157,3 +165,8 @@ func _on_deal_atc_damage_timeout() -> void:
 	$deal_atc_damage.stop()
 	Gobal.chef_current_attack = false
 	attackip = false
+
+func flash_white():
+	chef.modulate = Color(15, 15, 15)
+	await get_tree().create_timer(0.08).timeout
+	chef.modulate = Color(1, 1, 1)
