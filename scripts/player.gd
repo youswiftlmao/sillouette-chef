@@ -7,8 +7,10 @@ const JUMP_VELOCITY = -270.0
 var health = 100
 
 var bat_inattackrange = false
-var bat_cooldown = true
+var bat_atckcooldown = true
 var playeralive = true
+var attackip = false
+
 
 @onready var chef: AnimatedSprite2D = $chef
 @onready var healthbar: ProgressBar = $CanvasLayer/healthbar
@@ -23,11 +25,18 @@ var gotitem4 = false
 
 func _ready() -> void:
 	updhp()
-	
+	randomize()
+
 func _physics_process(delta: float) -> void:
-	if health <= 0 :
+	
+	enemyattack()
+	updhp()
+	attack()
+	if health <= 0 and playeralive:
+		playeralive = false
+		health = 0
+		set_physics_process(false)
 		Transition.reset_scene()
-	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 		# sfx for ump landing cuz idk where 2 put it
@@ -52,7 +61,9 @@ func _physics_process(delta: float) -> void:
 		 
 	#animations
 	if is_on_floor():
-		if direction == 0:
+		if attackip:
+			pass
+		elif direction == 0:
 			chef.play("idle")
 			$Footstep.stop()
 			$FootstepTimer.stop()
@@ -62,7 +73,6 @@ func _physics_process(delta: float) -> void:
 			if $FootstepTimer.is_stopped():
 				$Footstep.play()      # instant first step
 				$FootstepTimer.start()
-
 	else:
 		$Footstep.stop()
 		$FootstepTimer.stop()
@@ -124,4 +134,26 @@ func _on_players_hitbox_body_exited(body: Node2D) -> void:
 	if body.has_method("bat"):
 		bat_inattackrange = false
 func enemyattack():
-	pass
+	if bat_inattackrange and bat_atckcooldown == true :
+		health -= 7
+		bat_atckcooldown = false
+		$ATTACKCD.start()
+		print("chef took damage", health)
+
+
+func _on_attackcd_timeout() -> void:
+	bat_atckcooldown = true
+	
+func attack():
+	if Input.is_action_just_pressed("attack") and not attackip :
+		Gobal.chef_current_attack = true
+		attackip = true
+		
+		var attack_num = randi() % 4 + 1  # gives 1–4
+		$chef.play("attack" + str(attack_num))
+		$deal_atc_damage.start()
+
+func _on_deal_atc_damage_timeout() -> void:
+	$deal_atc_damage.stop()
+	Gobal.chef_current_attack = false
+	attackip = false

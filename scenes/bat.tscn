@@ -160,5 +160,11 @@ position = Vector2(0, -2.7199402)
 scale = Vector2(1.3124406, 1.3124406)
 shape = SubResource("CircleShape2D_48wkk")
 
+[node name="takedamage cd" type="Timer" parent="." unique_id=1218894]
+wait_time = 0.6
+
 [connection signal="body_entered" from="detection area" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="detection area" to="." method="_on_detection_area_body_exited"]
+[connection signal="body_entered" from="bathitbox" to="." method="_on_bathitbox_body_entered"]
+[connection signal="body_exited" from="bathitbox" to="." method="_on_bathitbox_body_exited"]
+[connection signal="timeout" from="takedamage cd" to="." method="_on_takedamage_cd_timeout"]
