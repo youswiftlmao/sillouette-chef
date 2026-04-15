@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://don6qcuet2x4l" path="res://assets/sand_tileset.png" id="3_lnu2h"]
 [ext_resource type="Texture2D" uid="uid://dmsfh8qia3xbt" path="res://assets/WATEWR1.png" id="4_u5sy4"]
 [ext_resource type="Texture2D" uid="uid://n7tcnf6h84iy" path="res://assets/WATER23.png" id="5_gee14"]
+[ext_resource type="Texture2D" uid="uid://cjclpglq3qg3l" path="res://assets/spike.png" id="5_ssvqc"]
 [ext_resource type="Texture2D" uid="uid://b7to46ii7n5k6" path="res://assets/salt.png" id="6_0tnpc"]
 [ext_resource type="Script" uid="uid://cg3bu5kt4trah" path="res://scripts/salt.gd" id="7_vtaks"]
 [ext_resource type="AudioStream" uid="uid://c5hg3b1e2uewp" path="res://sounds/driken5482-retro-blip-236676.mp3" id="8_gee14"]
@@ -802,10 +803,18 @@ texture = ExtResource("3_lnu2h")
 9:5/0 = 0
 9:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -6.0065613, 6.3547688, -6.0065613, 6.0065613, 6.180666, -8, 6.180666)
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_264po"]
+texture = ExtResource("5_ssvqc")
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.9645452, 2.1523418, 0.60915375, 8, 3.451869, 2.1523418, 5.1574974, 2.0711212, 8, 8, -6.9443474, 8, -4.913836, 2.1523418)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-7.1067877, -8, 8, -8, 8, 8, -6.9443474, 8)
+
 [sub_resource type="TileSet" id="TileSet_lbhrr"]
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_lnu2h")
 sources/1 = SubResource("TileSetAtlasSource_lbhrr")
+sources/2 = SubResource("TileSetAtlasSource_264po")
 
 [sub_resource type="Animation" id="Animation_kvpfn"]
 length = 0.001
@@ -1013,7 +1022,6 @@ position = Vector2(2691, 143)
 texture = ExtResource("4_u5sy4")
 
 [node name="Watewr5" type="Sprite2D" parent="WATER" unique_id=1583492481]
-z_index = -1
 position = Vector2(2723, 143)
 texture = ExtResource("4_u5sy4")
 
@@ -1023,18 +1031,18 @@ position = Vector2(2659, 143)
 texture = ExtResource("4_u5sy4")
 
 [node name="Watewr3" type="Sprite2D" parent="WATER" unique_id=437143179]
-z_index = -1
+z_index = 1
 position = Vector2(2755, 143)
 texture = ExtResource("4_u5sy4")
 
 [node name="Watewr4" type="Sprite2D" parent="WATER" unique_id=2007763650]
-z_index = -1
-position = Vector2(2787, 143)
+position = Vector2(2785, 145)
 texture = ExtResource("4_u5sy4")
 
 [node name="Watewr6" type="Sprite2D" parent="WATER" unique_id=1296307456]
 z_index = -1
-position = Vector2(2819, 143)
+position = Vector2(2817.5, 143)
+scale = Vector2(1.09375, 1)
 texture = ExtResource("4_u5sy4")
 
 [node name="Watewr7" type="Sprite2D" parent="WATER" unique_id=1517620978]
@@ -1048,28 +1056,278 @@ position = Vector2(2595, 143)
 texture = ExtResource("4_u5sy4")
 
 [node name="Water23" type="Sprite2D" parent="WATER" unique_id=924066822]
-z_index = -1
-position = Vector2(2788, 175)
+position = Vector2(2785, 168)
+scale = Vector2(1, 0.5625)
+texture = ExtResource("5_gee14")
+
+[node name="Water29" type="Sprite2D" parent="WATER" unique_id=1434371082]
+position = Vector2(2754, 168)
+scale = Vector2(1, 0.5625)
+texture = ExtResource("5_gee14")
+
+[node name="Water30" type="Sprite2D" parent="WATER" unique_id=1436623228]
+position = Vector2(2724, 168)
+scale = Vector2(1, 0.5625)
+texture = ExtResource("5_gee14")
+
+[node name="Water31" type="Sprite2D" parent="WATER" unique_id=1834360787]
+position = Vector2(2695, 168)
+scale = Vector2(1, 0.5625)
+texture = ExtResource("5_gee14")
+
+[node name="Water32" type="Sprite2D" parent="WATER" unique_id=1674892617]
+position = Vector2(2665, 168)
+scale = Vector2(1, 0.5625)
+texture = ExtResource("5_gee14")
+
+[node name="Water33" type="Sprite2D" parent="WATER" unique_id=1012561278]
+position = Vector2(2639, 168)
+scale = Vector2(1, 0.5625)
+texture = ExtResource("5_gee14")
+
+[node name="Water34" type="Sprite2D" parent="WATER" unique_id=123487854]
+position = Vector2(2639, 153)
+scale = Vector2(1, 0.5625)
+texture = ExtResource("5_gee14")
+
+[node name="Water35" type="Sprite2D" parent="WATER" unique_id=1075070030]
+position = Vector2(2664, 154)
+scale = Vector2(1, 0.5625)
+texture = ExtResource("5_gee14")
+
+[node name="Water36" type="Sprite2D" parent="WATER" unique_id=373476336]
+position = Vector2(2691, 153)
+scale = Vector2(1, 0.5625)
+texture = ExtResource("5_gee14")
+
+[node name="Water37" type="Sprite2D" parent="WATER" unique_id=2092506529]
+position = Vector2(2691, 153)
+scale = Vector2(1, 0.5625)
+texture = ExtResource("5_gee14")
+
+[node name="Water38" type="Sprite2D" parent="WATER" unique_id=2114878460]
+position = Vector2(2666, 154)
+scale = Vector2(1, 0.5625)
+texture = ExtResource("5_gee14")
+
+[node name="Water39" type="Sprite2D" parent="WATER" unique_id=736822511]
+position = Vector2(2640, 153)
+scale = Vector2(1, 0.5625)
+texture = ExtResource("5_gee14")
+
+[node name="Water40" type="Sprite2D" parent="WATER" unique_id=808648791]
+position = Vector2(2641, 168)
+scale = Vector2(1, 0.5625)
+texture = ExtResource("5_gee14")
+
+[node name="Water41" type="Sprite2D" parent="WATER" unique_id=1680833146]
+position = Vector2(2641, 168)
+scale = Vector2(1, 0.5625)
+texture = ExtResource("5_gee14")
+
+[node name="Water42" type="Sprite2D" parent="WATER" unique_id=601014482]
+position = Vector2(2711, 157)
+scale = Vector2(1, 0.5625)
+texture = ExtResource("5_gee14")
+
+[node name="Water43" type="Sprite2D" parent="WATER" unique_id=1875783666]
+position = Vector2(2738, 153)
+scale = Vector2(1, 0.5625)
+texture = ExtResource("5_gee14")
+
+[node name="Water44" type="Sprite2D" parent="WATER" unique_id=877265569]
+position = Vector2(2759, 156)
+scale = Vector2(1, 0.5625)
+texture = ExtResource("5_gee14")
+
+[node name="Water45" type="Sprite2D" parent="WATER" unique_id=762822811]
+position = Vector2(2784, 156)
+scale = Vector2(1, 0.5625)
+texture = ExtResource("5_gee14")
+
+[node name="Water46" type="Sprite2D" parent="WATER" unique_id=430662329]
+position = Vector2(2783, 151)
+scale = Vector2(1, 0.5625)
+texture = ExtResource("5_gee14")
+
+[node name="Water47" type="Sprite2D" parent="WATER" unique_id=1031703757]
+position = Vector2(2782, 164)
+scale = Vector2(1, 0.5625)
+texture = ExtResource("5_gee14")
+
+[node name="Water48" type="Sprite2D" parent="WATER" unique_id=1813505084]
+position = Vector2(2785, 168.00002)
+scale = Vector2(1, 0.5625)
+texture = ExtResource("5_gee14")
+
+[node name="Water49" type="Sprite2D" parent="WATER" unique_id=2049441559]
+position = Vector2(2785, 168.00002)
+scale = Vector2(1, 0.5625)
 texture = ExtResource("5_gee14")
 
 [node name="Water24" type="Sprite2D" parent="WATER" unique_id=275193702]
 z_index = -1
-position = Vector2(2756, 175)
+position = Vector2(2756, 168)
+scale = Vector2(1, 0.5625)
+texture = ExtResource("5_gee14")
+
+[node name="Water50" type="Sprite2D" parent="WATER" unique_id=1466811172]
+z_index = -1
+position = Vector2(2756, 168)
+scale = Vector2(1, 0.5625)
+texture = ExtResource("5_gee14")
+
+[node name="Water51" type="Sprite2D" parent="WATER" unique_id=2100159100]
+z_index = -1
+position = Vector2(2751, 164)
+scale = Vector2(1, 0.5625)
+texture = ExtResource("5_gee14")
+
+[node name="Water52" type="Sprite2D" parent="WATER" unique_id=1561752484]
+z_index = 1
+position = Vector2(2753, 167)
+scale = Vector2(1, 0.5625)
+texture = ExtResource("5_gee14")
+
+[node name="Water53" type="Sprite2D" parent="WATER" unique_id=733018060]
+z_index = 1
+position = Vector2(2721, 167)
+scale = Vector2(1, 0.5625)
+texture = ExtResource("5_gee14")
+
+[node name="Water57" type="Sprite2D" parent="WATER" unique_id=694628062]
+z_index = 1
+position = Vector2(2660, 167)
+scale = Vector2(1, 0.5625)
+texture = ExtResource("5_gee14")
+
+[node name="Water58" type="Sprite2D" parent="WATER" unique_id=1516971289]
+z_index = 1
+position = Vector2(2660, 167)
+scale = Vector2(1, 0.5625)
+texture = ExtResource("5_gee14")
+
+[node name="Water59" type="Sprite2D" parent="WATER" unique_id=477052724]
+z_index = 1
+position = Vector2(2640, 144)
+scale = Vector2(1, 0.5625)
+texture = ExtResource("5_gee14")
+
+[node name="Water60" type="Sprite2D" parent="WATER" unique_id=1180811583]
+z_index = 1
+position = Vector2(2666, 144)
+scale = Vector2(1, 0.5625)
+texture = ExtResource("5_gee14")
+
+[node name="Water61" type="Sprite2D" parent="WATER" unique_id=221832306]
+z_index = 1
+position = Vector2(2693, 144)
+scale = Vector2(1, 0.5625)
+texture = ExtResource("5_gee14")
+
+[node name="Water62" type="Sprite2D" parent="WATER" unique_id=978638869]
+z_index = 1
+position = Vector2(2711, 144)
+scale = Vector2(1, 0.5625)
+texture = ExtResource("5_gee14")
+
+[node name="Water63" type="Sprite2D" parent="WATER" unique_id=1949399466]
+z_index = 1
+position = Vector2(2743, 144)
+scale = Vector2(1, 0.5625)
+texture = ExtResource("5_gee14")
+
+[node name="Water64" type="Sprite2D" parent="WATER" unique_id=721451672]
+z_index = 1
+position = Vector2(2762, 144)
+scale = Vector2(1, 0.5625)
+texture = ExtResource("5_gee14")
+
+[node name="Water65" type="Sprite2D" parent="WATER" unique_id=1004681174]
+z_index = 1
+position = Vector2(2785, 144)
+scale = Vector2(1, 0.5625)
+texture = ExtResource("5_gee14")
+
+[node name="Water66" type="Sprite2D" parent="WATER" unique_id=1966252452]
+z_index = 1
+position = Vector2(2723, 145)
+scale = Vector2(1, 0.5625)
+texture = ExtResource("5_gee14")
+
+[node name="Water67" type="Sprite2D" parent="WATER" unique_id=1273206555]
+z_index = 1
+position = Vector2(2691, 142)
+scale = Vector2(1, 0.5625)
+texture = ExtResource("5_gee14")
+
+[node name="Water68" type="Sprite2D" parent="WATER" unique_id=1219929035]
+z_index = 1
+position = Vector2(2667, 142)
+scale = Vector2(1, 0.5625)
+texture = ExtResource("5_gee14")
+
+[node name="Water69" type="Sprite2D" parent="WATER" unique_id=912529862]
+z_index = 1
+position = Vector2(2649, 143)
+scale = Vector2(1, 0.5625)
+texture = ExtResource("5_gee14")
+
+[node name="Water70" type="Sprite2D" parent="WATER" unique_id=443346636]
+z_index = 1
+position = Vector2(2641, 144)
+scale = Vector2(1, 0.5625)
+texture = ExtResource("5_gee14")
+
+[node name="Water71" type="Sprite2D" parent="WATER" unique_id=1246810850]
+z_index = 1
+position = Vector2(2725, 149)
+scale = Vector2(1, 0.5625)
+texture = ExtResource("5_gee14")
+
+[node name="Water72" type="Sprite2D" parent="WATER" unique_id=853771882]
+z_index = 1
+position = Vector2(2731, 151)
+scale = Vector2(1, 0.5625)
+texture = ExtResource("5_gee14")
+
+[node name="Water73" type="Sprite2D" parent="WATER" unique_id=1942643091]
+z_index = 1
+position = Vector2(2722, 144)
+scale = Vector2(1, 0.5625)
+texture = ExtResource("5_gee14")
+
+[node name="Water54" type="Sprite2D" parent="WATER" unique_id=2118686263]
+z_index = 1
+position = Vector2(2669, 165)
+scale = Vector2(1, 0.5625)
+texture = ExtResource("5_gee14")
+
+[node name="Water55" type="Sprite2D" parent="WATER" unique_id=771106535]
+z_index = 1
+position = Vector2(2688, 167)
+scale = Vector2(1, 0.5625)
+texture = ExtResource("5_gee14")
+
+[node name="Water56" type="Sprite2D" parent="WATER" unique_id=2071814591]
+z_index = 1
+position = Vector2(2688, 167)
+scale = Vector2(1, 0.5625)
 texture = ExtResource("5_gee14")
 
 [node name="Water25" type="Sprite2D" parent="WATER" unique_id=872385717]
 z_index = -1
-position = Vector2(2724, 175)
+position = Vector2(2686, 172)
 texture = ExtResource("5_gee14")
 
 [node name="Water26" type="Sprite2D" parent="WATER" unique_id=1614871222]
 z_index = -1
-position = Vector2(2692, 175)
+position = Vector2(2670, 174)
 texture = ExtResource("5_gee14")
 
 [node name="Water27" type="Sprite2D" parent="WATER" unique_id=1548706413]
 z_index = -1
-position = Vector2(2660, 175)
+position = Vector2(2698, 153)
 texture = ExtResource("5_gee14")
 
 [node name="Water28" type="Sprite2D" parent="WATER" unique_id=1221957063]
@@ -1200,6 +1458,13 @@ position = Vector2(3156, 115)
 
 [node name="bat" parent="." unique_id=1589009573 instance=ExtResource("17_rysoc")]
 position = Vector2(68, -47.000004)
+
+[node name="spikesmap" type="TileMap" parent="." unique_id=318706553]
+position = Vector2(0, 2)
+tile_set = SubResource("TileSet_lbhrr")
+format = 2
+layer_0/z_index = -1
+layer_0/tile_data = PackedInt32Array(262158, 65538, 0, 65546, 65538, 0, 262164, 65538, 0, -65503, 65538, 0, -65467, 65538, 0, -65451, 65538, 0, -524187, 65538, 0, -524160, 65538, 0, -524164, 65538, 0, -982922, 65538, 0, 393366, 65538, 1, 327830, 65538, 1, 262294, 65538, 0, 262293, 65538, 0, 393367, 65538, 1, 327831, 65538, 0, 393368, 65538, 0, 589988, 65538, 0, 524452, 65538, 0, 524455, 65538, 0, 524462, 65538, 0, 524461, 65538, 0, 524460, 65538, 0, 524459, 65538, 0, 524458, 65538, 0, 524457, 65538, 0, 524456, 65538, 0, 524454, 65538, 0, 524453, 65538, 0, 589998, 65538, 0, 655534, 65538, 0, 655533, 65538, 0, 655532, 65538, 0, 655531, 65538, 0, 655530, 65538, 0, 589994, 65538, 0, 589993, 65538, 0, 589992, 65538, 0, 589991, 65538, 0, 589990, 65538, 0, 589989, 65538, 0, 589987, 65538, 0, 655523, 65538, 0, 655524, 65538, 0, 655525, 65538, 0, 655526, 65538, 0, 655527, 65538, 0, 589995, 65538, 0, 655529, 65538, 0, 655528, 65538, 0, 589996, 65538, 0, 589997, 65538, 0, 393427, 65538, 0, 393436, 65538, 0)
 
 [connection signal="ITEM2" from="pickups/salt" to="thechef" method="_on_salt_item_2"]
 [connection signal="pressed" from="pickups/salt" to="pickups/salt" method="_on_pressed"]

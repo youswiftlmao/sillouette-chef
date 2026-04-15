@@ -15,7 +15,7 @@ func _set_health(new_health):
 
 	prevhealth = health
 	health = clamp(new_health, 0, max_value)
-	value = health
+	value = lerp(value, float(health), 0.15)
 
 	if health <= 0:
 		queue_free()

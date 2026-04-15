@@ -3,22 +3,37 @@ extends CharacterBody2D
 var speed = 30
 var playerchase = false
 var player = null
-
+var dead = false
 var health = 100
 var playerinattackzone = false
 var cantakedamage = true
-func  _physics_process(delta: float) -> void:
+
+func _physics_process(delta: float) -> void:
+	if dead:
+		return
+
 	deal_with_damage()
-	
-	if health <= 0 :
-		cantakedamage = false
+	bat_attack()
+
+	if health <= 0:
+		dead = true
+		$"detection area".monitoring = false
+		$CollisionShape2D.disabled = true
+		$bathitbox.monitoring = false
+		playerchase = false
 		playerinattackzone = false
+		cantakedamage = false
+
+		velocity = Vector2.ZERO
+
 		$bat.play("die")
 		await $bat.animation_finished
-		self.queue_free()
+		queue_free()
+		return
+
 	if playerchase:
-		position +=(player.position - position)/speed 
-		
+		position += (player.position - position) / speed
+
 		if (player.position.x - position.x) < 0:
 			$bat.flip_h = true
 		else:
@@ -46,12 +61,11 @@ func _on_bathitbox_body_exited(body: Node2D) -> void:
 		playerinattackzone = false
 		
 func deal_with_damage():
-	if health <= 0:
+	if dead:
 		return
 	if playerinattackzone and Gobal.chef_current_attack == true and health > 0:
 		if cantakedamage == true:
 			health -= 51
-			
 
 			$hit.play()
 			$"takedamage cd".start()
@@ -61,3 +75,12 @@ func deal_with_damage():
 func _on_takedamage_cd_timeout() -> void:
 	if health > 0 :
 		cantakedamage = true
+func bat_attack():
+	if dead:
+		return
+
+	if playerinattackzone:
+		if $bat.animation != "atack":
+			$bat.play("atack")
+	else :
+		$bat.play("default")

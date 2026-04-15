@@ -32,10 +32,19 @@ func _physics_process(delta: float) -> void:
 	enemyattack()
 	updhp()
 	attack()
+	
+	
 	if health <= 0 and playeralive:
 		playeralive = false
 		health = 0
+		bat_inattackrange = false
+		bat_atckcooldown = true
+		playeralive = true
+		attackip = false
 		set_physics_process(false)
+		$chef.play("die")
+		$dead.play()
+		await get_tree().create_timer(1.0).timeout
 		Transition.reset_scene()
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -102,6 +111,9 @@ func _physics_process(delta: float) -> void:
 		$CanvasLayer/inv2/Done.visible = true
 	if gotitem3 == true :
 		$CanvasLayer/inv2/Done3.visible = true
+		
+	if health > 100:
+		health =  100
 func _on_time_footstep_timer_timeout() -> void:
 	$Footstep.play()
 
@@ -134,6 +146,7 @@ func _on_hurt_area_entered(area: Area2D) -> void:
 func _on_players_hitbox_body_entered(body: Node2D) -> void:
 	if body.has_method("bat"):
 		bat_inattackrange = true
+	
 
 
 func _on_players_hitbox_body_exited(body: Node2D) -> void:
@@ -170,3 +183,12 @@ func flash_white():
 	chef.modulate = Color(15, 15, 15)
 	await get_tree().create_timer(0.08).timeout
 	chef.modulate = Color(1, 1, 1)
+
+
+func _on_regen_timeout() -> void:
+	health += 20
+
+
+func _on_hiutboxarea_body_entered(body: Node2D) -> void:
+	if body.name == "spikesmap":
+		health = 0

@@ -79,7 +79,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_67y1s")
 }],
-"loop": false,
+"loop": true,
 "name": &"atack",
 "speed": 5.0
 }, {
@@ -141,7 +141,7 @@ script = ExtResource("1_cnldk")
 
 [node name="bat" type="AnimatedSprite2D" parent="." unique_id=1393438554]
 sprite_frames = SubResource("SpriteFrames_8qtcx")
-animation = &"die"
+animation = &"atack"
 autoplay = "default"
 
 [node name="detection area" type="Area2D" parent="." unique_id=564653904]
@@ -168,8 +168,8 @@ wait_time = 0.6
 [node name="hit" type="AudioStreamPlayer2D" parent="." unique_id=542256421]
 position = Vector2(76.158325, 54.398804)
 stream = ExtResource("3_48wkk")
-volume_db = -12.03
-pitch_scale = 2.3
+volume_db = -5.0
+pitch_scale = 1.64
 
 [connection signal="body_entered" from="detection area" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="detection area" to="." method="_on_detection_area_body_exited"]

@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://bvhfw81gwrpnx" path="res://assets/DONE.png" id="14_gjg41"]
 [ext_resource type="PackedScene" uid="uid://jcangal3rt4t" path="res://scenes/healthbar.tscn" id="15_pm1cm"]
 [ext_resource type="AudioStream" uid="uid://cifhicxvgu5ak" path="res://sounds/freesound_community-hurt_c_08-102842.mp3" id="18_yjsmm"]
+[ext_resource type="AudioStream" uid="uid://dbyt1eijrhslr" path="res://assets/freesound_community-dead-8bit-41400.mp3" id="19_3uxqh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e8iao"]
 atlas = ExtResource("2_e6ydx")
@@ -94,6 +95,14 @@ region = Rect2(1040, 96, 79, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_g5tfv"]
 atlas = ExtResource("2_e6ydx")
 region = Rect2(1040, 128, 79, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ixqi8"]
+atlas = ExtResource("3_e8iao")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lyk8j"]
+atlas = ExtResource("3_e8iao")
+region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bejd7"]
 atlas = ExtResource("3_e8iao")
@@ -260,6 +269,17 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_ixqi8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lyk8j")
+}],
+"loop": true,
+"name": &"die",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_bejd7")
 }],
 "loop": false,
@@ -408,9 +428,9 @@ script = ExtResource("1_keyna")
 
 [node name="chef" type="AnimatedSprite2D" parent="." unique_id=2119319736]
 sprite_frames = SubResource("SpriteFrames_lrinr")
-animation = &"hit"
+animation = &"die"
 autoplay = "idle"
-frame_progress = 1.0
+frame_progress = 0.9784697
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1941308865]
 zoom = Vector2(4, 4)
@@ -595,6 +615,23 @@ stream = ExtResource("18_yjsmm")
 volume_db = -8.0
 pitch_scale = 1.52
 
+[node name="regen" type="Timer" parent="." unique_id=290309232]
+wait_time = 10.0
+autostart = true
+
+[node name="dead" type="AudioStreamPlayer2D" parent="." unique_id=700174932]
+position = Vector2(-139, 142)
+stream = ExtResource("19_3uxqh")
+volume_db = -8.0
+pitch_scale = 1.5
+
+[node name="hiutboxarea" type="Area2D" parent="." unique_id=1300532977]
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="hiutboxarea" unique_id=2115144104]
+position = Vector2(0, 1)
+scale = Vector2(1.0150362, 1.0150362)
+shape = SubResource("RectangleShape2D_keyna")
+
 [connection signal="timeout" from="FootstepTimer" to="." method="_on_time_footstep_timer_timeout"]
 [connection signal="pressed" from="CanvasLayer/toggleinv" to="CanvasLayer" method="_on_toggleinv_pressed"]
 [connection signal="pressed" from="CanvasLayer/inv2/inv" to="CanvasLayer" method="_on_inv_pressed"]
@@ -602,3 +639,5 @@ pitch_scale = 1.52
 [connection signal="body_exited" from="players_hitbox" to="." method="_on_players_hitbox_body_exited"]
 [connection signal="timeout" from="ATTACKCD" to="." method="_on_attackcd_timeout"]
 [connection signal="timeout" from="deal_atc_damage" to="." method="_on_deal_atc_damage_timeout"]
+[connection signal="timeout" from="regen" to="." method="_on_regen_timeout"]
+[connection signal="body_entered" from="hiutboxarea" to="." method="_on_hiutboxarea_body_entered"]
