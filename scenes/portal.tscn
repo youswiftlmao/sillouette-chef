@@ -43,8 +43,7 @@
 [ext_resource type="Texture2D" uid="uid://d0be6yb7l3ime" path="res://assets/Portal/Portal_100x100px40.png" id="41_bv2jr"]
 [ext_resource type="Texture2D" uid="uid://cd7b8kshibj3i" path="res://assets/Portal/Portal_100x100px41.png" id="42_l7ioq"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nx28l"]
-size = Vector2(344, 143)
+[sub_resource type="CircleShape2D" id="CircleShape2D_3ydm4"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_f51oq"]
 animations = [{
@@ -183,8 +182,9 @@ script = ExtResource("1_3ydm4")
 [node name="Area2D" type="Area2D" parent="." unique_id=1439645325]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=125088501]
-position = Vector2(0, -31.5)
-shape = SubResource("RectangleShape2D_nx28l")
+position = Vector2(-2.000001, -2)
+scale = Vector2(2.122069, 2.122069)
+shape = SubResource("CircleShape2D_3ydm4")
 
 [node name="portal" type="AnimatedSprite2D" parent="." unique_id=1942246650]
 sprite_frames = SubResource("SpriteFrames_f51oq")

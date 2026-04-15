@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://cg3bu5kt4trah" path="res://scripts/salt.gd" id="7_vtaks"]
 [ext_resource type="AudioStream" uid="uid://c5hg3b1e2uewp" path="res://sounds/driken5482-retro-blip-236676.mp3" id="8_gee14"]
 [ext_resource type="Texture2D" uid="uid://bypl22qrjiqxt" path="res://assets/wheat.png" id="9_kvpfn"]
+[ext_resource type="Script" uid="uid://6eucybd2akm1" path="res://scripts/soda.gd" id="10_264po"]
 [ext_resource type="Texture2D" uid="uid://bvnymuj7467jr" path="res://assets/wheatdrop.png" id="10_dinhu"]
 [ext_resource type="Texture2D" uid="uid://bclb3bgqch5e8" path="res://assets/cow.png" id="10_ir15t"]
 [ext_resource type="Script" uid="uid://3d4qh3a6qao2" path="res://scripts/cow.gd" id="11_ca42v"]
@@ -18,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://c06uioggdg5fs" path="res://scenes/platform.tscn" id="12_dinhu"]
 [ext_resource type="Texture2D" uid="uid://dxmj43hs6x825" path="res://assets/barn.png" id="15_rysoc"]
 [ext_resource type="PackedScene" uid="uid://bhlpagmp7x882" path="res://scenes/bat.tscn" id="17_rysoc"]
+[ext_resource type="PackedScene" uid="uid://baftwcrw218o1" path="res://scenes/portal.tscn" id="20_1kice"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lnu2h"]
 texture = ExtResource("2_yqjtg")
@@ -816,117 +818,6 @@ sources/0 = SubResource("TileSetAtlasSource_lnu2h")
 sources/1 = SubResource("TileSetAtlasSource_lbhrr")
 sources/2 = SubResource("TileSetAtlasSource_264po")
 
-[sub_resource type="Animation" id="Animation_kvpfn"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(2591, 124)]
-}
-
-[sub_resource type="Animation" id="Animation_dinhu"]
-resource_name = "pick"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.21666667, 0.26666668),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(2589, 124), Vector2(2589, 124), Vector2(2591, 124)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_kvuet"]
-_data = {
-&"RESET": SubResource("Animation_kvpfn"),
-&"pick": SubResource("Animation_dinhu")
-}
-
-[sub_resource type="Animation" id="Animation_trtic"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1985, -254)]
-}
-
-[sub_resource type="Animation" id="Animation_ir15t"]
-resource_name = "click"
-length = 0.25
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.09827651, 0.11661501, 0.22304197, 0.23333333),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(1985, -254), Vector2(1985, -254), Vector2(1985, -254), Vector2(1985, -254), Vector2(1986, -254)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_ca42v"]
-_data = {
-&"RESET": SubResource("Animation_trtic"),
-&"click": SubResource("Animation_ir15t")
-}
-
-[sub_resource type="Animation" id="Animation_264po"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(3675, 82)]
-}
-
-[sub_resource type="Animation" id="Animation_1kice"]
-resource_name = "pick"
-length = 0.375
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.13333334, 0.16666667, 0.33333334, 0.36666667),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(3675, 82), Vector2(3675, 82), Vector2(3675, 85), Vector2(3675, 85), Vector2(3675, 82)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_5newe"]
-_data = {
-&"RESET": SubResource("Animation_264po"),
-&"pick": SubResource("Animation_1kice")
-}
-
 [sub_resource type="Animation" id="Animation_kvuet"]
 length = 0.001
 tracks/0/type = "value"
@@ -1007,7 +898,7 @@ _data = {
 script = ExtResource("1_ca42v")
 
 [node name="thechef" parent="." unique_id=241996407 instance=ExtResource("1_uwrxv")]
-position = Vector2(-88, -40)
+position = Vector2(2042, -251)
 
 [node name="TileMap" type="TileMap" parent="." unique_id=2128948057]
 tile_set = SubResource("TileSet_lbhrr")
@@ -1346,8 +1237,16 @@ texture_normal = ExtResource("6_0tnpc")
 stretch_mode = 0
 script = ExtResource("7_vtaks")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="pickups/salt" unique_id=351555315]
-libraries/ = SubResource("AnimationLibrary_kvuet")
+[node name="click1" type="AudioStreamPlayer2D" parent="pickups/salt" unique_id=1404090897]
+position = Vector2(-752, 265)
+stream = ExtResource("8_gee14")
+volume_db = -8.0
+
+[node name="click2" type="AudioStreamPlayer2D" parent="pickups/salt" unique_id=788711718]
+position = Vector2(-752, 265)
+stream = ExtResource("8_gee14")
+volume_db = -8.0
+pitch_scale = 1.3
 
 [node name="wheat" type="TextureButton" parent="pickups" unique_id=609008895]
 z_index = 2
@@ -1359,8 +1258,16 @@ texture_normal = ExtResource("9_kvpfn")
 ignore_texture_size = true
 script = ExtResource("11_kvuet")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="pickups/wheat" unique_id=1781120600]
-libraries/ = SubResource("AnimationLibrary_ca42v")
+[node name="click1" type="AudioStreamPlayer2D" parent="pickups/wheat" unique_id=1967395924]
+position = Vector2(-752, 265)
+stream = ExtResource("8_gee14")
+volume_db = -8.0
+
+[node name="click2" type="AudioStreamPlayer2D" parent="pickups/wheat" unique_id=2095343970]
+position = Vector2(-752, 265)
+stream = ExtResource("8_gee14")
+volume_db = -8.0
+pitch_scale = 1.3
 
 [node name="cow" type="TextureButton" parent="pickups" unique_id=806965387]
 z_index = -2
@@ -1371,8 +1278,35 @@ offset_bottom = 114.0
 texture_normal = ExtResource("10_ir15t")
 script = ExtResource("11_ca42v")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="pickups/cow" unique_id=629659566]
-libraries/ = SubResource("AnimationLibrary_5newe")
+[node name="click1" type="AudioStreamPlayer2D" parent="pickups/cow" unique_id=856738805]
+position = Vector2(-752, 265)
+stream = ExtResource("8_gee14")
+volume_db = -8.0
+
+[node name="click2" type="AudioStreamPlayer2D" parent="pickups/cow" unique_id=2137943457]
+position = Vector2(-752, 265)
+stream = ExtResource("8_gee14")
+volume_db = -8.0
+pitch_scale = 1.3
+
+[node name="soda" type="TextureButton" parent="pickups" unique_id=28202533]
+offset_left = 3965.0
+offset_top = 13.0
+offset_right = 3981.0
+offset_bottom = 18.0
+texture_normal = ExtResource("6_0tnpc")
+script = ExtResource("10_264po")
+
+[node name="click1" type="AudioStreamPlayer2D" parent="pickups/soda" unique_id=418856493]
+position = Vector2(-752, 265)
+stream = ExtResource("8_gee14")
+volume_db = -8.0
+
+[node name="click2" type="AudioStreamPlayer2D" parent="pickups/soda" unique_id=770288437]
+position = Vector2(-752, 265)
+stream = ExtResource("8_gee14")
+volume_db = -8.0
+pitch_scale = 1.3
 
 [node name="wheatdecor" type="Sprite2D" parent="pickups" unique_id=889463643]
 position = Vector2(1925, -238)
@@ -1402,17 +1336,6 @@ texture = ExtResource("10_dinhu")
 position = Vector2(36.666748, 8.6666565)
 scale = Vector2(0.9166667, 0.9166667)
 texture = ExtResource("10_dinhu")
-
-[node name="blip12" type="AudioStreamPlayer2D" parent="pickups" unique_id=1404090897]
-position = Vector2(1839, 389)
-stream = ExtResource("8_gee14")
-volume_db = -8.0
-
-[node name="blip2" type="AudioStreamPlayer2D" parent="pickups" unique_id=788711718]
-position = Vector2(1839, 389)
-stream = ExtResource("8_gee14")
-volume_db = -8.0
-pitch_scale = 1.3
 
 [node name="platforms" type="Node2D" parent="." unique_id=1674373418]
 
@@ -1466,9 +1389,15 @@ format = 2
 layer_0/z_index = -1
 layer_0/tile_data = PackedInt32Array(262158, 65538, 0, 65546, 65538, 0, 262164, 65538, 0, -65503, 65538, 0, -65467, 65538, 0, -65451, 65538, 0, -524187, 65538, 0, -524160, 65538, 0, -524164, 65538, 0, -982922, 65538, 0, 393366, 65538, 1, 327830, 65538, 1, 262294, 65538, 0, 262293, 65538, 0, 393367, 65538, 1, 327831, 65538, 0, 393368, 65538, 0, 589988, 65538, 0, 524452, 65538, 0, 524455, 65538, 0, 524462, 65538, 0, 524461, 65538, 0, 524460, 65538, 0, 524459, 65538, 0, 524458, 65538, 0, 524457, 65538, 0, 524456, 65538, 0, 524454, 65538, 0, 524453, 65538, 0, 589998, 65538, 0, 655534, 65538, 0, 655533, 65538, 0, 655532, 65538, 0, 655531, 65538, 0, 655530, 65538, 0, 589994, 65538, 0, 589993, 65538, 0, 589992, 65538, 0, 589991, 65538, 0, 589990, 65538, 0, 589989, 65538, 0, 589987, 65538, 0, 655523, 65538, 0, 655524, 65538, 0, 655525, 65538, 0, 655526, 65538, 0, 655527, 65538, 0, 589995, 65538, 0, 655529, 65538, 0, 655528, 65538, 0, 589996, 65538, 0, 589997, 65538, 0, 393427, 65538, 0, 393436, 65538, 0)
 
+[node name="portal" parent="." unique_id=1095242219 instance=ExtResource("20_1kice")]
+position = Vector2(4017, -20)
+
+[connection signal="cango2nextlvl" from="thechef" to="portal" method="_on_thechef_cango_2_nextlvl"]
 [connection signal="ITEM2" from="pickups/salt" to="thechef" method="_on_salt_item_2"]
 [connection signal="pressed" from="pickups/salt" to="pickups/salt" method="_on_pressed"]
 [connection signal="ITEM1" from="pickups/wheat" to="thechef" method="_on_wheat_item_1"]
 [connection signal="pressed" from="pickups/wheat" to="pickups/wheat" method="_on_pressed"]
 [connection signal="ITEM3" from="pickups/cow" to="thechef" method="_on_cow_item_3"]
 [connection signal="pressed" from="pickups/cow" to="pickups/cow" method="_on_pressed"]
+[connection signal="ITEM4" from="pickups/soda" to="thechef" method="_on_soda_item_4"]
+[connection signal="pressed" from="pickups/soda" to="pickups/soda" method="_on_pressed"]

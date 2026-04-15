@@ -1,7 +1,9 @@
 extends TextureButton
 
+
 var clicked = 0 
-signal ITEM2
+signal ITEM4
+
 
 func _on_pressed() -> void:
 	clicked += 1
@@ -15,5 +17,5 @@ func _on_pressed() -> void:
 	if clicked == 3:
 		$click2.play()
 		await $click2.finished
-		emit_signal("ITEM2")
+		emit_signal("ITEM4")
 		queue_free()

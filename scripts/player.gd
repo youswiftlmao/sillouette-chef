@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+signal cango2nextlvl
 
 const SPEED = 175.0
 const JUMP_VELOCITY = -270.0
@@ -33,7 +34,8 @@ func _physics_process(delta: float) -> void:
 	updhp()
 	attack()
 	
-	
+	if gotitem1 and gotitem2 and gotitem3 and gotitem4 == true:
+		emit_signal("cango2nextlvl")
 	if health <= 0 and playeralive:
 		playeralive = false
 		health = 0
@@ -107,11 +109,20 @@ func _physics_process(delta: float) -> void:
 	#here under is for items recieved:
 	if gotitem2 == true:
 		$CanvasLayer/inv2/Done2.visible = true
+	else: 
+		$CanvasLayer/inv2/Done2.visible = false
 	if gotitem1:
 		$CanvasLayer/inv2/Done.visible = true
+	else: 
+		$CanvasLayer/inv2/Done.visible = false
 	if gotitem3 == true :
 		$CanvasLayer/inv2/Done3.visible = true
-		
+	else:
+		$CanvasLayer/inv2/Done3.visible = false
+	if gotitem4 == true : 
+		$CanvasLayer/inv2/Done4.visible = true
+	else:
+		$CanvasLayer/inv2/Done4.visible = false
 	if health > 100:
 		health =  100
 func _on_time_footstep_timer_timeout() -> void:
@@ -192,3 +203,8 @@ func _on_regen_timeout() -> void:
 func _on_hiutboxarea_body_entered(body: Node2D) -> void:
 	if body.name == "spikesmap":
 		health = 0
+
+
+func _on_soda_item_4() -> void:
+	gotitem4 = true
+	
