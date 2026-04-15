@@ -1,17 +1,15 @@
 extends Node2D
 
+var cantp = false
 
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-		if body.has_method("player"):
-			get_tree().change_scene_to_file("")
+		if body.has_method("player") and cantp:
+			Transition.fade_to_scene("res://scenes/lvl_2.tscn")
 
 
 func _on_thechef_cango_2_nextlvl() -> void:
-	pass # Replace with function body.
+	cantp = true

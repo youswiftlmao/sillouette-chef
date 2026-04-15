@@ -180,6 +180,7 @@ animations = [{
 script = ExtResource("1_3ydm4")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1439645325]
+z_index = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=125088501]
 position = Vector2(-2.000001, -2)
@@ -188,6 +189,7 @@ shape = SubResource("CircleShape2D_3ydm4")
 
 [node name="portal" type="AnimatedSprite2D" parent="." unique_id=1942246650]
 sprite_frames = SubResource("SpriteFrames_f51oq")
-frame_progress = 0.7918731
+autoplay = "default"
+frame_progress = 0.2802966
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
