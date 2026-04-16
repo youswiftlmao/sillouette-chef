@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://6eucybd2akm1" path="res://scripts/soda.gd" id="12_bd3eg"]
 [ext_resource type="PackedScene" uid="uid://baftwcrw218o1" path="res://scenes/portal.tscn" id="13_hajku"]
 [ext_resource type="PackedScene" uid="uid://c06uioggdg5fs" path="res://scenes/platform.tscn" id="14_bv24h"]
+[ext_resource type="Script" uid="uid://b0dbj6eet5mvs" path="res://scripts/portal2.gd" id="15_obn6w"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t0qu1"]
 texture = ExtResource("2_6y0h7")
@@ -1031,6 +1032,7 @@ layer_0/z_index = -1
 
 [node name="portal" parent="." unique_id=1095242219 instance=ExtResource("13_hajku")]
 position = Vector2(-478, -351)
+script = ExtResource("15_obn6w")
 
 [node name="platform" parent="." unique_id=1419959132 instance=ExtResource("14_bv24h")]
 position = Vector2(-326, -70)
@@ -1133,6 +1135,7 @@ position = Vector2(-163, -566)
 position = Vector2(-242, -520)
 
 [connection signal="lvl2now" from="." to="thechef" method="_on_lvl_2_lvl_2_now"]
+[connection signal="cango2nextlvl" from="thechef" to="portal" method="_on_thechef_cango_2_nextlvl"]
 [connection signal="lvl2rn" from="thechef" to="pickups/wheat" method="_on_thechef_lvl_2_rn"]
 [connection signal="ITEM2" from="pickups/salt" to="thechef" method="_on_salt_item_2"]
 [connection signal="pressed" from="pickups/salt" to="pickups/salt" method="_on_pressed"]
