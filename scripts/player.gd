@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 signal cango2nextlvl
-
+signal lvl2rn
 const SPEED = 175.0
 const JUMP_VELOCITY = -270.0
 #combat related vars
@@ -217,11 +217,13 @@ func _on_lvl_2_lvl_2_now() -> void:
 	gotitem2 = false
 	gotitem3 = false
 	gotitem4 = false
-	$CanvasLayer/inv2/todo.text = " butter (cow)"
+	$CanvasLayer/inv2/todo.text = " eggs (chicken)"
+	$"../pickups/wheat".texture_normal = load("res://assets/egg.png")
 	$CanvasLayer/inv2/todo2.text = " sugar (in a sack)"
 	$"../pickups/salt".texture_normal = load("res://assets/sugar.png")
-	$CanvasLayer/inv2/todo3.text = " eggs (chicken)"
+	$CanvasLayer/inv2/todo3.text = " butter (cow) "
 	$CanvasLayer/inv2/todo4.text = " chocolate (cacao tree)"
-
+	$"../pickups/soda".texture_normal = load("res://assets/Tree.png")
+	emit_signal("lvl2rn")
 func _on_game_lvl_1() -> void:
 	lvl1 = true
