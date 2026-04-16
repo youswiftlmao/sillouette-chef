@@ -32,8 +32,10 @@ func _physics_process(delta: float) -> void:
 		return
 
 	if playerchase:
-		position += (player.position - position) / speed
-
+		var dir = (player.position - position).normalized()
+		velocity = dir * 100  # adjust speed here
+		move_and_slide()
+		
 		if (player.position.x - position.x) < 0:
 			$bat.flip_h = true
 		else:
@@ -63,7 +65,7 @@ func _on_bathitbox_body_exited(body: Node2D) -> void:
 func deal_with_damage():
 	if dead:
 		return
-	if playerinattackzone and Gobal.chef_current_attack == true and health > 0:
+	if playerinattackzone and Gobal.chef_current_attack and cantakedamage:
 		if cantakedamage == true:
 			health -= 51
 

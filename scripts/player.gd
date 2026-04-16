@@ -15,8 +15,8 @@ var attackip = false
 
 @onready var chef: AnimatedSprite2D = $chef
 @onready var healthbar: ProgressBar = $CanvasLayer/healthbar
-
-
+var lvl1 = false
+var lvl2 = false
 var was_on_floor: bool = false
 
 var gotitem1 = false
@@ -34,7 +34,7 @@ func _physics_process(delta: float) -> void:
 	updhp()
 	attack()
 	
-	if gotitem1 and gotitem2 and gotitem3 and gotitem4 == true:
+	if gotitem1 and gotitem2 and gotitem3 and gotitem4:
 		emit_signal("cango2nextlvl")
 	if health <= 0 and playeralive:
 		playeralive = false
@@ -97,7 +97,8 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 	
-		
+	#lvl 2 changes
+	
 	if chef.animation == "hit" and not chef.is_playing():
 		if is_on_floor():
 			if Input.get_axis("left", "right") == 0:
@@ -208,3 +209,19 @@ func _on_hiutboxarea_body_entered(body: Node2D) -> void:
 func _on_soda_item_4() -> void:
 	gotitem4 = true
 	
+
+
+func _on_lvl_2_lvl_2_now() -> void:
+	lvl2 = true
+	gotitem1 = false
+	gotitem2 = false
+	gotitem3 = false
+	gotitem4 = false
+	$CanvasLayer/inv2/todo.text = " butter (cow)"
+	$CanvasLayer/inv2/todo2.text = " sugar (in a sack)"
+	$"../pickups/salt".texture_normal = load("res://assets/sugar.png")
+	$CanvasLayer/inv2/todo3.text = " eggs (chicken)"
+	$CanvasLayer/inv2/todo4.text = " chocolate (cacao tree)"
+
+func _on_game_lvl_1() -> void:
+	lvl1 = true
