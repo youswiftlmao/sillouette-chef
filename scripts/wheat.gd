@@ -26,3 +26,7 @@ func _on_pressed() -> void:
 
 func _on_thechef_lvl_2_rn() -> void:
 	change = false
+
+
+func _on_thechef_nowlvl_3() -> void:
+	change = false
