@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://i4vhfwak6ygu"]
+
+[ext_resource type="Texture2D" uid="uid://cfq0vxihvspk3" path="res://assets/P_Fall.png" id="1_s3a7h"]
+
+[node name="wip" type="Node2D" unique_id=696337939]
+
+[node name="PFall" type="Sprite2D" parent="." unique_id=1414960553]
+position = Vector2(512, 281.00006)
+scale = Vector2(533.4486, 401.0344)
+texture = ExtResource("1_s3a7h")
+region_enabled = true
+region_rect = Rect2(18.118515, 16.73046, 2.599062, 2.004095)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1207278294]
+offset_left = 60.0
+offset_top = 65.0
+offset_right = 1211.8721
+offset_bottom = 430.9018
+scale = Vector2(0.9046143, 0.9046143)
+theme_override_font_sizes/normal_font_size = 80
+text = "game is still a wip sorry just not feeling well so decided to ship now"
