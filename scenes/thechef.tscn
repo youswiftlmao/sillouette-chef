@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://jcangal3rt4t" path="res://scenes/healthbar.tscn" id="15_pm1cm"]
 [ext_resource type="AudioStream" uid="uid://cifhicxvgu5ak" path="res://sounds/freesound_community-hurt_c_08-102842.mp3" id="18_yjsmm"]
 [ext_resource type="AudioStream" uid="uid://dbyt1eijrhslr" path="res://assets/freesound_community-dead-8bit-41400.mp3" id="19_3uxqh"]
+[ext_resource type="AudioStream" uid="uid://bsgqwtmm8kpa0" path="res://scenes/moodmode-8-bit-arcade-mode-158814 (1).mp3" id="20_gjg41"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e8iao"]
 atlas = ExtResource("2_e6ydx")
@@ -631,6 +632,11 @@ pitch_scale = 1.5
 position = Vector2(0, 1)
 scale = Vector2(1.0150362, 1.0150362)
 shape = SubResource("RectangleShape2D_keyna")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=2003547697]
+stream = ExtResource("20_gjg41")
+volume_db = -30.03
+autoplay = true
 
 [connection signal="timeout" from="FootstepTimer" to="." method="_on_time_footstep_timer_timeout"]
 [connection signal="pressed" from="CanvasLayer/toggleinv" to="CanvasLayer" method="_on_toggleinv_pressed"]

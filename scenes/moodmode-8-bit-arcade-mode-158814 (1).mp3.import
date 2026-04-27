@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bsgqwtmm8kpa0"
+path="res://.godot/imported/moodmode-8-bit-arcade-mode-158814 (1).mp3-89680967ee721c50b6729ef38c0701c4.mp3str"
+
+[deps]
+
+source_file="res://scenes/moodmode-8-bit-arcade-mode-158814 (1).mp3"
+dest_files=["res://.godot/imported/moodmode-8-bit-arcade-mode-158814 (1).mp3-89680967ee721c50b6729ef38c0701c4.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

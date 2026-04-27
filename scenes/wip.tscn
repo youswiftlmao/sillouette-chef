@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://i4vhfwak6ygu"]
 
+[ext_resource type="Script" uid="uid://cn02gccanowds" path="res://scripts/wip.gd" id="1_r7dbr"]
 [ext_resource type="Texture2D" uid="uid://cfq0vxihvspk3" path="res://assets/P_Fall.png" id="1_s3a7h"]
 
 [node name="wip" type="Node2D" unique_id=696337939]
+script = ExtResource("1_r7dbr")
 
 [node name="PFall" type="Sprite2D" parent="." unique_id=1414960553]
 position = Vector2(512, 281.00006)
@@ -15,7 +17,7 @@ region_rect = Rect2(18.118515, 16.73046, 2.599062, 2.004095)
 offset_left = 60.0
 offset_top = 65.0
 offset_right = 1211.8721
-offset_bottom = 430.9018
+offset_bottom = 616.6163
 scale = Vector2(0.9046143, 0.9046143)
 theme_override_font_sizes/normal_font_size = 80
-text = "game is still a wip sorry just not feeling well so decided to ship now"
+text = "uh-oh you've reached the end for now...but dont worry the game will be finished soon!"

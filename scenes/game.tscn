@@ -911,7 +911,7 @@ _data = {
 script = ExtResource("1_ca42v")
 
 [node name="thechef" parent="." unique_id=241996407 instance=ExtResource("1_uwrxv")]
-position = Vector2(2011, -284)
+position = Vector2(-19, -75)
 
 [node name="TileMap" type="TileMap" parent="." unique_id=2128948057]
 tile_set = SubResource("TileSet_lbhrr")
